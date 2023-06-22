@@ -1,0 +1,16 @@
+{
+  "name": "arup-poc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.33.0"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4.7.0"
+  }
+}
