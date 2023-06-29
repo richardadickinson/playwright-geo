@@ -52,8 +52,13 @@ export default defineConfig({
       testMatch: /.*\.setup\.js/
     },
     {
+      name: 'api tests',
+      testMatch: /.*api-tests\.spec\.js/,
+      use: { ...devices['Desktop Chrome'] }
+    },
+    {
       name: 'chromium',
-      testIgnore: /.*unauthenticated-tests\.spec\.js/,
+      testIgnore: /.*[unauthenticated|api]-tests\.spec\.js/,
       use: {
         ...devices['Desktop Chrome'],
         // use prepared auth state
