@@ -102,6 +102,15 @@ test.describe('Test GUI', () => {
         await catalogPage.clearDatasetSearchFilter()
     })
 
+    test('Catalog - metadata links', async ({ page }) => {
+        const homepage = new GeoPortalHomePage(page)
+        await changePage({ page, test }, homepage.catalogLink, '/en/catalog', 'Catalog page')
+        const catalogPage = new CatalogPage(page)
+        await catalogPage.searchOnDatasetsField.fill('boundary')
+        await catalogPage.collapseButton.click()
+        await catalogPage.openMetadataModal()
+    })
+
     test('Catalog - atlas links spot check', async ({ page }) => {
         test.slow()
         const homepage = new GeoPortalHomePage(page)

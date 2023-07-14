@@ -75,6 +75,19 @@ exports.CatalogPage = class CatalogPage {
         }
     }
 
+    async openMetadataModal() {
+        await this.page.getByTitle('Select').first().isVisible()
+        for (var i=0; i < atlasLinks.length; i++) {
+            await this.page.locator('button:nth-child(3):right-of(:text("'+atlasLinks[i][0]+'"))').first().click()
+            expect(this.page.locator('h5')).toHaveText(atlasLinks[i][0])
+            await this.page.getByText('MD_Metadata').click()
+            expect(this.page.getByText('MetadataStandardVersion')).toBeVisible()
+            expect(this.page.getByText('MetadataStandardName')).toBeVisible()
+            expect(this.page.getByText('IdentificationInfo')).toBeVisible()
+            await this.page.getByText('Close').click()
+        }
+    }
+
     async countDatasetsInView(value) {
         await this.page.getByTitle('Select').first().isVisible()
         await expect(this.page.getByTitle('Select')).toHaveCount(value)
